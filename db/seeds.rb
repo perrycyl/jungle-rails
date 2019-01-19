@@ -132,5 +132,46 @@ cat3.products.create!({
   price: 2_483.75
 })
 
+User.create!({
+  email: 'perry.liu@gmail.com',
+  password: '123',
+  first_name: 'Perry',
+  last_name: 'Liu'
+})
+
+User.create!({
+  email: 'lighthousetesting@yahoo.com',
+  password: '123',
+  first_name: 'Mike',
+  last_name: 'Engerer'
+})
+
+Review.create!({
+  product_id: 3,
+  user_id: 1,
+  rating: 5,
+  description: Faker::Hipster.paragraph(1)
+})
+
+Review.create!({
+  product_id: 2,
+  user_id: 1,
+  rating: 2,
+  description: Faker::Hipster.paragraph(1)
+})
+
+Review.create!({
+  product_id: 2,
+  user_id: 2,
+  rating: 2,
+  description: Faker::Hipster.paragraph(1)
+})
+
+Review.create!({
+  product_id: 4,
+  user_id: 1,
+  rating: 3,
+  description: Faker::Hipster.paragraph(1)
+})
 
 puts "DONE!"
