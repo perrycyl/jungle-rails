@@ -6,7 +6,8 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find params[:id]
-    @reviews = Review.where(product_id: @product.id)
+    @reviews_rating = Review.where(product_id: @product.id).average(:rating)
+    @reviews = Review.where(product_id: @product_id)
   end
 
 end
