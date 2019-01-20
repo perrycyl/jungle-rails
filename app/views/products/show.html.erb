@@ -39,23 +39,25 @@
             <tr>
               <td>
               <tbody>
-                <% Review.where(product_id: @product.id).each do |review| %>
+                <% Review.where(product_id: @product.id).order("created_at DESC").each do |review| %>
                   <%= render 'review', review: review, reviewer: User.find( review[:user_id]) %>
                 <% end %>
               </tbody>
               </td>
             </tr>
           </dd>
-          <dt>
-            Submit A Review
-          </dt>
-          <dd>
-            <%= form_for ([@product, @product.reviews.build])  do |f| %>
-              Description: <%= f.text_field :description %><br />
-              Rating: <%= f.select :rating, options_for_select([["Select One", ""], "1", "2", "3", "4", "5"]), :class => 'genForm_dropBox'  %><br />
-            <%= f.submit %>
-            <% end %>
-          </dd>
+          <%if current_user %>
+            <dt>
+              Submit A Review
+            </dt>
+            <dd>
+                  <%= form_for ([@product, @product.reviews.build])  do |f| %>
+                    <%= f.text_area :description %><br />
+                    Rating: <%= f.select :rating, options_for_select([["Select One", ""], "5", "4", "3", "2", "1"]), :class => 'genForm_dropBox'  %><br />
+                  <%= f.submit %>
+                  <% end %>
+            </dd>
+          <%end%>
         </dl>
       </div>
     </div>
