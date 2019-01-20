@@ -6,11 +6,13 @@ class UsersController < ApplicationController
     def create
         puts "users params output: #{user_params}"
         user = User.new(user_params)
-        if user.save!
+        if user.save
         session[:user_id] = user.id
-        redirect_to [:products], notice: "Thank you for signing up!"
+        flash[:notice] = "Thank you for signing up! Enjoy shopping on Jungle." 
+        redirect_to [:products]
         else
-        redirect_to'/signup'
+        flash[:notice] = "Email already exisits. Please try login"
+        redirect_to'/login'
         end
     end
 
