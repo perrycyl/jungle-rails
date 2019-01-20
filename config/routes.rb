@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   post '/login' => 'session#create'
   get '/logout' => 'sessions#destroy'
   post '/users'  => 'users#create'
+  # post '/products' => 'reviews#create', :as => :product_reviews
   resources :users
   resources :sessions
 

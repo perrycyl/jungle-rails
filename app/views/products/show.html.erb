@@ -46,6 +46,16 @@
               </td>
             </tr>
           </dd>
+          <dt>
+            Submit A Review
+          </dt>
+          <dd>
+            <%= form_for ([@product, @product.reviews.build])  do |f| %>
+              Description: <%= f.text_field :description %><br />
+              Rating: <%= f.select :rating, options_for_select([["Select One", ""], "1", "2", "3", "4", "5"]), :class => 'genForm_dropBox'  %><br />
+            <%= f.submit %>
+            <% end %>
+          </dd>
         </dl>
       </div>
     </div>
