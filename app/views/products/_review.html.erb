@@ -2,9 +2,9 @@
   <td>
     <p>
     <%= review.description %> 
-    <div align="right">reviewed by <%= reviewer.first_name%> <%=reviewer.last_name %></div> 
+    <div align="right">Rating: <%=review.rating%> of 5, reviewed by <%= reviewer.first_name%> <%=reviewer.last_name %></div> 
     <% if current_user.id == review.user_id  %>
-      <%= link_to "Delete", product_review_path(review.user_id, review.id), method: :delete, data: { confirm: "Are you sure?"} %> 
+      <div align="right"> <%= link_to "Delete Review", product_review_path(review.user_id, review.id), method: :delete, data: { confirm: "Are you sure?"} %> </div>
     <% end %>
     </p>
   </td>
