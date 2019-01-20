@@ -7,10 +7,11 @@ class SessionsController < ApplicationController
 
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect_to '/', notice: "Logged in!"
+      flash[:notice] = "Login Successful."
+      redirect_to '/'
     puts "Inside create"
     else
-      flash.now.alert = "Email or password is invalid"
+      flash[:notice] = "Email or password is invalid"
       render "new"
     puts "failed login"
     end
