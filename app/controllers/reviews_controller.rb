@@ -12,6 +12,12 @@ class ReviewsController < ApplicationController
         end
     end
 
+    def destroy
+        @review = Review.find(params[:id])
+        @review.destroy
+        redirect_to 'http://localhost:3000/products'
+    end
+
     private
 
     def review_params
