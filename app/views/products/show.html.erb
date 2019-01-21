@@ -28,7 +28,11 @@
           <dd>
             <tr>
               <td>
-                <%= @reviews_rating.round(2) %> of 5
+                <% if @reviews_rating != nil %> 
+                <%= @reviews_rating %> of 5
+                <% else %>
+                No ratings
+                <% end %>
               </td>
             </tr>
           </dd>
